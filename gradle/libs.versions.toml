@@ -1,7 +1,7 @@
 [versions]
 # Minecraft 1.21.1 upwards uses Java 21
 # 26.1 upwards uses Java 25
-jdk = "24"
+jdk = "25"
 
 # Fabric Properties
 # Check these on https://fabricmc.net/versions.html
@@ -42,11 +42,11 @@ iris = "1.10.3+1.21.11-fabric"
 
 # Kotlin
 # https://kotlinlang.org/releases.html
-kotlin = "2.2.10"
+kotlin = "2.3.0"
 # https://central.sonatype.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-test/overview
 kotlinx-coroutines = "1.10.2"
 # https://maven.fabricmc.net/net/fabricmc/fabric-language-kotlin/
-fabric-kotlin = "1.13.5+kotlin.2.2.10"
+fabric-kotlin = "1.13.8+kotlin.2.3.0"
 
 # Netty, should be sync with game version
 # https://mvnrepository.com/artifact/io.netty/netty-all

@@ -39,7 +39,7 @@ base {
 }
 
 /** Includes non-mod dependency recursively in the JAR file */
-val includeDependency: Configuration by configurations.creating
+val includeDependency: Configuration by configurations.creating(Configuration::excludeProvidedLibs)
 
 /** Includes native-only dependency in the JAR file */
 val includeNative: Configuration by configurations.creating
@@ -174,14 +174,10 @@ dependencies {
 //    testImplementation(libs.fabric.loader.junit)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    afterEvaluate {
-        includeDependency.incoming.resolutionResult.allDependencies.forEach {
-            val apiDependency = dependencies.api(it.requested.toString()) {
-                isTransitive = false
-            }
+    includeDependency.dependencies.forEach { dep ->
+        include(dep)
 
-            dependencies.include(apiDependency)
-        }
+        dependencies.api(dep.toString())
     }
 }
 
