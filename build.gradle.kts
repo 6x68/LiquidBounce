@@ -44,8 +44,6 @@ val includeDependency: Configuration by configurations.creating(Configuration::e
 /** Includes native-only dependency in the JAR file */
 val includeNative: Configuration by configurations.creating
 
-includeDependency.excludeProvidedLibs()
-
 configurations {
     include.configure {
         extendsFrom(includeNative)
