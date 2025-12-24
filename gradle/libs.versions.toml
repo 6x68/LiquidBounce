@@ -1,7 +1,7 @@
 [versions]
 # Minecraft 1.21.1 upwards uses Java 21
 # 26.1 upwards uses Java 25
-jdk = "21"
+jdk = "24"
 
 # Fabric Properties
 # Check these on https://fabricmc.net/versions.html
