@@ -109,38 +109,34 @@ loom {
 dependencies {
     // Minecraft
     minecraft(libs.minecraft)
-    mappings(loom.layered {
-        officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${libs.versions.minecraft.get()}:2025.12.20@zip")
-    })
 
     // Fabric
-    modApi(libs.fabric.loader)
-    modApi(libs.fabric.api)
-    modApi(libs.fabric.kotlin)
+    api(libs.fabric.loader)
+    api(libs.fabric.api)
+    api(libs.fabric.kotlin)
 
     // Mod menu
-    modApi(libs.modmenu)
+    api(libs.modmenu)
 
     // Recommended mods (on IDE)
-    modApi(libs.sodium)
-    modApi(libs.lithium)
+//    api(libs.sodium)
+//    api(libs.lithium)
 //    modRuntimeOnly(libs.immediatelyFast)
 //    modRuntimeOnly(libs.iris)
 
     // ViaFabricPlus
-    modApi(libs.vfp.api)
-    modRuntimeOnly(libs.vfp)
+    api(libs.vfp.api)
+//    runtimeOnly(libs.vfp)
 
     // Exploit Preventer
-    modApi(libs.exploitPreventer.api)
-    modRuntimeOnly(libs.exploitPreventer)
+    api(libs.exploitPreventer.api)
+//    runtimeOnly(libs.exploitPreventer)
 
     // Minecraft Authlib
     includeDependency(libs.mcAuthlib)
 
     // JCEF Support
-    modApi(libs.mcef)
+    api(libs.mcef)
     include(libs.mcef)
     includeDependency(libs.httpServer)
 
@@ -148,7 +144,6 @@ dependencies {
     includeDependency(libs.discordIpc)
 
     // ScriptAPI
-    includeDependency("net.fabricmc:tiny-mappings-parser:0.3.0+build.17")
     includeDependency(libs.polyglot)
     includeDependency(libs.polyglot.js)
     includeDependency(libs.polyglot.tools)
@@ -376,14 +371,10 @@ tasks.jar {
     val archivesBaseName = providers.gradleProperty("archives_base_name")
     val modVersion = providers.gradleProperty("mod_version")
     val mavenGroup = providers.gradleProperty("maven_group")
-    val mappingFiles = provider {
-        rootProject.configurations.mappings.get().map(::zipTree)
-    }
 
     inputs.property("archives_base_name", archivesBaseName)
     inputs.property("mod_version", modVersion)
     inputs.property("maven_group", mavenGroup)
-    inputs.files(mappingFiles).withPropertyName("mappingFiles")
 
     manifest {
         attributes["Main-Class"] = "net.ccbluex.liquidbounce.LiquidInstruction"
@@ -397,10 +388,6 @@ tasks.jar {
         rename {
             "${it}_${archivesBaseName.get()}"
         }
-    }
-
-    from(files(mappingFiles.get())) {
-        include("mappings/mappings.tiny")
     }
 }
 

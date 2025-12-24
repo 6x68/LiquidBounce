@@ -44,7 +44,7 @@ import net.ccbluex.liquidbounce.utils.collection.Filter
 import net.ccbluex.liquidbounce.utils.kotlin.EventPriorityConvention
 import net.ccbluex.liquidbounce.utils.kotlin.isNotRoot
 import net.ccbluex.liquidbounce.utils.kotlin.toFullString
-import net.ccbluex.liquidbounce.utils.mappings.EnvironmentRemapper
+import net.ccbluex.liquidbounce.utils.mappings.toDotNotation
 import net.minecraft.network.protocol.Packet
 import net.minecraft.network.chat.MutableComponent
 import net.minecraft.ChatFormatting
@@ -133,8 +133,7 @@ object ModulePacketLogger : ClientModule("PacketLogger", Category.MISC) {
             override fun handle(origin: TransferOrigin, packet: Packet<*>, canceled: Boolean, packetId: Identifier) {
                 val clazz = packet.javaClass
 
-                val packetClassName = classNames.computeIfAbsent(clazz, EnvironmentRemapper::remapClass)
-                    .substringAfterLast('.')
+                val packetClassName = clazz.name.substringAfterLast('.')
 
                 val text = "".asText()
                 if (origin == TransferOrigin.INCOMING) {
@@ -175,7 +174,7 @@ object ModulePacketLogger : ClientModule("PacketLogger", Category.MISC) {
 
                 val clazz = packet.javaClass
 
-                val packetClassName = classNames.computeIfAbsent(clazz, EnvironmentRemapper::remapClass)
+                val packetClassName = clazz.name
                     .substringAfterLast('.')
 
                 file.appendingSink().buffer().use {
@@ -224,9 +223,7 @@ object ModulePacketLogger : ClientModule("PacketLogger", Category.MISC) {
 
                 field.isAccessible = true
 
-                val name = fieldNames.computeIfAbsent(field) {
-                    EnvironmentRemapper.remapField(currentClass!!.name, field.name)
-                }
+                val name = field.name
 
                 val value = try {
                     field.get(packet)?.toString()

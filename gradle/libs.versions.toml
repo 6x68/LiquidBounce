@@ -6,14 +6,14 @@ jdk = "24"
 # Fabric Properties
 # Check these on https://fabricmc.net/versions.html
 # https://mods.upcraft.dev/dev/versions
-minecraft = "1.21.11"
+minecraft = "26.1-snapshot-1"
 fabric-loom = "1.14-SNAPSHOT"
-fabric-loader = "0.18.3"
+fabric-loader = "0.18.4"
 fabric-loaderMin = "0.16.14"
-fabric-api = "0.140.0+1.21.11"
+fabric-api = "0.140.2+26.1"
 
 # mcef
-mcef = "3.1.6-1.21.11"
+mcef = "0.0.0-26.1"
 # mc-authlib
 mc_authlib = "1.6.0"
 # Polyglot
@@ -30,7 +30,7 @@ ahocorasick = "0.6.3"
 fastutil4k = "0.2.2"
 
 # Recommended mods
-modmenu = "17.0.0-beta.1"
+modmenu = "18.0.0-alpha.2"
 exploit_preventer_api = "0.0.1"
 exploit_preventer_mod = "0.1.7"
 sodium = "mc1.21.11-0.8.1-fabric"
@@ -70,7 +70,8 @@ netty-handler-proxy = { group = "io.netty", name = "netty-handler-proxy", versio
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp-coroutines = { group = "com.squareup.okhttp3", name = "okhttp-coroutines", version.ref = "okhttp" }
 mcAuthlib = { group = "net.ccbluex", name = "mc-authlib", version.ref = "mc_authlib" }
-mcef = { group = "com.github.CCBlueX", name = "mcef", version.ref = "mcef" }
+# TODO(version/26.1): switch back to CCBlueX mcef
+mcef = { group = "com.github.6x68", name = "mcef", version.ref = "mcef" }
 httpServer = { group = "net.ccbluex", name = "netty-httpserver", version.ref = "httpServer" }
 discordIpc = { group = "com.github.CCBlueX", name = "DiscordIPC", version.ref = "discordIpc" }
 semver4j = { group = "com.vdurmont", name = "semver4j", version.ref = "semver4j" }
@@ -99,7 +100,7 @@ immediatelyFast = { group = "maven.modrinth", name = "ImmediatelyFast", version.
 iris = { group = "maven.modrinth", name = "iris", version.ref = "iris" }
 
 [plugins]
-fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }
+fabric-loom = { id = "net.fabricmc.fabric-loom", version.ref = "fabric-loom" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 gradleGitProperties = { id = "com.gorylenko.gradle-git-properties", version.ref = "gradleGitProperties" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
