@@ -100,7 +100,7 @@ immediatelyFast = { group = "maven.modrinth", name = "ImmediatelyFast", version.
 iris = { group = "maven.modrinth", name = "iris", version.ref = "iris" }
 
 [plugins]
-fabric-loom = { id = "net.fabricmc.fabric-loom", version.ref = "fabric-loom" }
+fabric-loom = { id = "net.fabricmc.fabric-loom-remap", version.ref = "fabric-loom" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 gradleGitProperties = { id = "com.gorylenko.gradle-git-properties", version.ref = "gradleGitProperties" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

@@ -107,34 +107,38 @@ loom {
 dependencies {
     // Minecraft
     minecraft(libs.minecraft)
+    loom.noIntermediateMappings()
+    mappings(loom.layered {
+        parchment("org.parchmentmc.data:parchment-1.21.11:BLEEDING-20251220.145140-1@zip")
+    })
 
     // Fabric
-    api(libs.fabric.loader)
-    api(libs.fabric.api)
-    api(libs.fabric.kotlin)
+    modApi(libs.fabric.loader)
+    modApi(libs.fabric.api)
+    modApi(libs.fabric.kotlin)
 
     // Mod menu
-    api(libs.modmenu)
+    modApi(libs.modmenu)
 
     // Recommended mods (on IDE)
-//    api(libs.sodium)
-//    api(libs.lithium)
+//    modApi(libs.sodium)
+//    modApi(libs.lithium)
 //    modRuntimeOnly(libs.immediatelyFast)
 //    modRuntimeOnly(libs.iris)
 
     // ViaFabricPlus
-    api(libs.vfp.api)
+    modApi(libs.vfp.api)
 //    runtimeOnly(libs.vfp)
 
     // Exploit Preventer
-    api(libs.exploitPreventer.api)
+    modApi(libs.exploitPreventer.api)
 //    runtimeOnly(libs.exploitPreventer)
 
     // Minecraft Authlib
     includeDependency(libs.mcAuthlib)
 
     // JCEF Support
-    api(libs.mcef)
+    modApi(libs.mcef)
     include(libs.mcef)
     includeDependency(libs.httpServer)
 
